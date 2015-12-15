@@ -1,21 +1,21 @@
 # encoding: utf-8
 require 'spec_helper'
-require "logstash/filters/example"
+require "logstash/filters/seq"
 
-describe LogStash::Filters::Example do
-  describe "Set to Hello World" do
+describe LogStash::Filters::Seq do
+  describe "Add a sequence Number" do
     let(:config) do <<-CONFIG
       filter {
-        example {
-          message => "Hello World"
+        seq {
+          field => "seq"
         }
       }
     CONFIG
     end
 
-    sample("message" => "some text") do
-      expect(subject).to include("message")
-      expect(subject['message']).to eq('Hello World')
+#    sample("message" => "some text") do
+#      expect(subject).to include("message")
+#      expect(subject['message']).to eq('Hello World')
     end
   end
 end
